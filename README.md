@@ -6,7 +6,7 @@ Bu proje, Python ve [Streamlit](https://streamlit.io/) kullanılarak geliştiril
 
 -   Görüntüden numara plakası tespiti
 -   Tespit edilen plakanın kırpılması
--   Plaka üzerindeki karakterlerin okunması (Bu özellik henüz kodda tam olarak aktif değilse, "Geliştiriliyor" olarak belirtebilirsiniz.)
+-   Plaka üzerindeki karakterlerin okunması 
 -   Kullanıcı dostu arayüz
 
 ## Gereksinimler
