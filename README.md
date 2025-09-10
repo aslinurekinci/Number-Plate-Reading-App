@@ -1,33 +1,34 @@
-Plaka Tanıma Sistemi
-Bu proje, araç plakalarını görüntülerden tespit etmek ve tanımak için YOLO (You Only Look Once) nesne algılama modelini kullanan bir Plaka Tanıma Sistemi'dir. Uygulama, görüntüleri yüklemek ve algılama sonuçlarını görüntülemek için kullanıcı dostu bir arayüz sağlayan Streamlit ile geliştirilmiştir.
+🚗 Plaka Tanıma Sistemi (Plate Recognition System)
+Bu proje, bir görüntüdeki araç plakasını tespit etmek ve tanımak için YOLO (You Only Look Once) nesne algılama modelini kullanan bir uygulamadır. Uygulama, kullanıcı dostu bir arayüzle görüntü yükleme ve algılama sonuçlarını görüntüleme imkânı sunan Streamlit kullanılarak geliştirilmiştir.
 
-Özellikler
-Plaka Algılama: Uygulama, yüklenen bir görüntüdeki araç plakalarını tanımlayabilir ve konumlandırabilir.
+✨ Temel Özellikler
+Plaka Algılama: Yüklenen bir görüntüdeki araç plakalarını otomatik olarak bulur ve konumlandırır.
 
-Kırpma ve Görüntüleme: Algılamadan sonra, plaka alanı kırpılır ve algılanan plakanın işaretli olduğu orijinal görüntü ile birlikte ayrı olarak gösterilir.
+Akıllı Kırpma: Algılanan plaka alanını kırpar ve daha net görüntülenmesi için ayrı bir görüntü olarak sunar.
 
-Güven Puanı: Sistem, algılanan her bir plaka için modelin ne kadar emin olduğunu gösteren bir güven puanı sağlar.
+Güven Puanı Gösterimi: Her bir algılama için, modelin tahmininden ne kadar emin olduğunu gösteren bir güven puanı sağlar.
 
-Kullanıcı Dostu Arayüz: Web uygulamasının kullanımı basittir; bir görüntü yükleyin ve sonuçları anında görün.
+Kullanıcı Dostu Arayüz: Sadece birkaç tıklamayla kolayca görüntü yükleyebilir ve sonuçları görebilirsiniz.
 
-Model Eğitimi
-Bu sistemin temelinde, özel olarak eğitilmiş bir YOLOv8 modeli olan plate_detection.pt bulunmaktadır. Eğitim süreci genel olarak şu adımları içerir:
+🧠 Model Eğitimi
+Bu sistemin kalbinde, özel olarak eğitilmiş bir YOLOv8 modeli olan plate_detection.pt bulunmaktadır. Modelin eğitim süreci aşağıdaki adımları içerir:
 
-Veri Toplama: İçinde araç plakaları bulunan görüntülerden oluşan bir veri kümesi toplandı.
+Veri Toplama: Araç plakası içeren çeşitli görüntülerden oluşan bir veri kümesi oluşturuldu.
 
-Etiketleme (Annotation): Görüntülerdeki her bir araç plakası manuel olarak etiketlendi ve etrafına bir sınırlayıcı kutu çizilerek bir eğitim veri seti oluşturuldu.
+Etiketleme (Annotation): Her bir araç plakasının etrafı, modelin doğru bir şekilde öğrenmesi için sınırlayıcı kutularla işaretlendi.
 
-Eğitim: Etiketlenmiş veriler, araç plakalarının desenlerini ve özelliklerini tanımayı öğrenen YOLOv8 modelini eğitmek için kullanıldı.
+Model Eğitimi: Etiketlenen veri kümesi kullanılarak YOLOv8 modeli eğitildi, böylece model plakaların özelliklerini tanıyabilir hale geldi.
 
-Nasıl Çalışır?
-Uygulama, iki ana Python betiği kullanır: main.py ve helper.py.
+🛠️ Nasıl Çalışır?
+Uygulama, main.py ve helper.py olmak üzere iki ana Python dosyasından oluşur:
 
-main.py: Bu betik, Streamlit ile oluşturulmuş uygulamanın ön yüzüdür. Dosya yükleyici ve görüntüleri gösterme gibi kullanıcı arayüzü bileşenlerini yönetir. Kullanıcı bir görüntü yüklediğinde, main.py görüntü verilerini detect_plate fonksiyonuna gönderir.
+main.py: Bu dosya, Streamlit ile oluşturulan arayüzü yönetir. Kullanıcının dosya yüklemesini sağlar ve sonuçları görüntüler.
 
-helper.py: Bu betik, plaka algılama için temel mantığı içerir. Yüklenen görüntüyü işlemek için YOLO modelini kullanır. detect_plate fonksiyonu, bir görüntü ve model yolunu girdi olarak alır ve sınırlayıcı kutularla işlenmiş görüntüyü, kırpılmış plakayı ve plaka algılanıp algılanmadığını belirten bir bayrak döndürür.
+helper.py: Bu dosya, plaka algılama mantığını içerir. YOLO modelini kullanarak görüntüleri işler ve algılama sonuçlarını döndürür.
 
+📦 Kurulum ve Çalıştırma
 Bağımlılıklar
-Bu uygulamayı çalıştırmak için aşağıdaki kütüphanelerin yüklü olması gerekmektedir:
+Uygulamayı çalıştırabilmek için aşağıdaki kütüphanelerin yüklü olması gerekir:
 
 streamlit
 
@@ -39,7 +40,7 @@ Pillow
 
 numpy
 
-Hepsini tek seferde pip kullanarak kurabilirsiniz:
+Tüm bağımlılıkları tek bir komutla kurabilirsiniz:
 
 Bash
 
@@ -47,13 +48,13 @@ pip install streamlit opencv-python ultralytics Pillow numpy
 Kullanım
 Bu depoyu bilgisayarınıza klonlayın.
 
-plate_detection.pt model dosyasının models dizininde bulunduğundan emin olun.
+plate_detection.pt adlı eğitilmiş model dosyasının models klasöründe bulunduğundan emin olun.
 
-Terminalinizden Streamlit uygulamasını çalıştırın:
+Terminalinizi açın ve projenin ana dizinine gidin.
+
+Aşağıdaki komutu çalıştırarak uygulamayı başlatın:
 
 Bash
 
 streamlit run main.py
-Web tarayıcınızda size verilen yerel URL'yi açın.
-
-Bir araç görüntüsü yükleyin, sistem plakayı algılayacak ve gösterecektir.
+Web tarayıcınızda otomatik olarak açılan sayfada uygulamayı kullanmaya başlayabilirsiniz.
